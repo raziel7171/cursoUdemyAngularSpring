@@ -3,6 +3,7 @@ import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
+import { observable } from 'rxjs';
 
 
 @Component({
@@ -31,12 +32,20 @@ cargarCliente(): void{
   })
 }
 
-  public create(): void{
+  create(): void{
     this.clienteService.create(this.cliente).subscribe(
       response => { this.router.navigate(['/clientes'])
       swal.fire('Nuevo Cliente', `Cliente ${this.cliente.nombre} creado con éxito!`, 'success')
 
     }
     );
+  }
+  update(): void{
+    this.clienteService.update(this.cliente).subscribe(
+      cliente => {
+        this.router.navigate(['/clientes'])
+        swal.fire('cliente Actualizado', `Cliente ${this.cliente.nombre} actualizado con éxito!`, 'success')
+      }
+    )
   }
 }
