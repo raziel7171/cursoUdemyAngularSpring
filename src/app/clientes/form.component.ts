@@ -12,8 +12,8 @@ import { observable } from 'rxjs';
 })
 export class FormComponent implements OnInit {
 
-  private cliente: Cliente = new Cliente();
-  private titulo:string ="Crear cliente";
+  cliente: Cliente = new Cliente();
+  titulo:string ="Crear cliente";
 
   constructor(private clienteService: ClienteService,
     private router: Router,
@@ -48,4 +48,5 @@ cargarCliente(): void{
       }
     )
   }
+
 }
