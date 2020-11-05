@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import swal from 'sweetalert2';
 import { observable } from 'rxjs';
-
+import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html'
 })
 export class FormComponent implements OnInit {
-
+  @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   cliente: Cliente = new Cliente();
   titulo:string ="Crear cliente";
   errores: string[];
+
+
 
   constructor(private clienteService: ClienteService,
     private router: Router,
